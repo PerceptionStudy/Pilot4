@@ -1,9 +1,8 @@
-userID;condition;rep_0--ecc_0--tech_0;rep_0--ecc_0--tech_1;rep_0--ecc_0--tech_2;rep_0--ecc_1--tech_0;rep_0--ecc_1--tech_1;rep_0--ecc_1--tech_2;rep_1--ecc_0--tech_0;rep_1--ecc_0--tech_1;rep_1--ecc_0--tech_2;rep_1--ecc_1--tech_0;rep_1--ecc_1--tech_1;rep_1--ecc_1--tech_2
-df;;0;0;0;0;0;0;0;0;0;0;0;0
-df;;0;0;0;0;0;0;0;0;0;0;0;0
-df;;0;1;0;1;0;0;1;1;0;1;1;1
-sdf;;1;1;1;1;1;1;1;1;0;1;1;1
-sdf;;1;1;1;1;1;1;1;1;1;1;1;1
-df;;1;1;1;1;1;1;1;1;1;1;1;1
-mb; ;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1
-sdf;;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1
+userID;condition;rep_0--ecc_0--tech_0;rep_0--ecc_0--tech_1;rep_0--ecc_0--tech_2;rep_0--ecc_0--tech_3;rep_0--ecc_1--tech_0;rep_0--ecc_1--tech_1;rep_0--ecc_1--tech_2;rep_0--ecc_1--tech_3;rep_1--ecc_0--tech_0;rep_1--ecc_0--tech_1;rep_1--ecc_0--tech_2;rep_1--ecc_0--tech_3;rep_1--ecc_1--tech_0;rep_1--ecc_1--tech_1;rep_1--ecc_1--tech_2;rep_1--ecc_1--tech_3;rep_2--ecc_0--tech_0;rep_2--ecc_0--tech_1;rep_2--ecc_0--tech_2;rep_2--ecc_0--tech_3;rep_2--ecc_1--tech_0;rep_2--ecc_1--tech_1;rep_2--ecc_1--tech_2;rep_2--ecc_1--tech_3;rep_3--ecc_0--tech_0;rep_3--ecc_0--tech_1;rep_3--ecc_0--tech_2;rep_3--ecc_0--tech_3;rep_3--ecc_1--tech_0;rep_3--ecc_1--tech_1;rep_3--ecc_1--tech_2;rep_3--ecc_1--tech_3;rep_4--ecc_0--tech_0;rep_4--ecc_0--tech_1;rep_4--ecc_0--tech_2;rep_4--ecc_0--tech_3;rep_4--ecc_1--tech_0;rep_4--ecc_1--tech_1;rep_4--ecc_1--tech_2;rep_4--ecc_1--tech_3
+MWa_1;;0;1;1;1;0;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+MWa_2;;1;1;1;1;0;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1
+MWa_3;;0;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;0;1;1;1;0;1;1;1
+mb;;1;1;1;1;1;1;1;0;0;1;1;0;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;1;0
+MB_2;;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+mb3;;1;1;1;1;0;1;1;1;0;1;1;1;0;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;0;1;1;1
+sdf;;1;1;1;1;1;1;1;1

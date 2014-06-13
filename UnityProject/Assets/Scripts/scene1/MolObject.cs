@@ -12,7 +12,7 @@ public class MolObject : MonoBehaviour
 
 	// Attractive Flicker settings
 	public int amp1 = 100; 
-	public int T1 = 50; 
+	public int T1 = 100; 
 	public int amp2 = 25; 
 	public int T2 = 600; 
 	public int d1 = 1000; 
@@ -30,7 +30,9 @@ public class MolObject : MonoBehaviour
 
 	private Stopwatch stopWatch = new Stopwatch ();	
 
-	public static MolObject CreateNewMolObject (Transform parent, string name, MolColor color)
+	public int colorIndex; 
+
+	public static MolObject CreateNewMolObject (Transform parent, string name, MolColor color, int colorIndex)
 	{
 		var position = new Vector3 ((UnityEngine.Random.value - 0.5f) * MainScript.BoxSize.x, (UnityEngine.Random.value - 0.5f) * MainScript.BoxSize.y, (UnityEngine.Random.value - 0.5f) * MainScript.BoxSize.z);
 		var molGameObject = Instantiate (Resources.Load ("MolPrefab"), position, Quaternion.identity) as GameObject;
@@ -46,6 +48,7 @@ public class MolObject : MonoBehaviour
 			molObject.currentColor = color; 
 			molObject.halo = null; 
 			molObject.trail = null; 
+			molObject.colorIndex = colorIndex; 
 
 			molGameObject.GetComponent<MeshRenderer> ().material.color = color.rgba;
 
@@ -61,6 +64,7 @@ public class MolObject : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+
 		if (!MainScript.Animate)
 		{
 			rigidbody.drag = 10000;
