@@ -22,7 +22,7 @@ public class Stimulus
 
 	// stimulus timing settings 
 	public int duration = 5000; 								// hardcoded timeout after 10 seconds 
-	public int delay = UnityEngine.Random.Range (500, 5000);	// random delay before highlight start
+	public int delay = UnityEngine.Random.Range (2000, 6000);	// random delay before highlight start
 
 
 	public Stimulus(int stimulusId, int visionArea, int repeatId, int techID)
@@ -99,6 +99,7 @@ public class MainScript : MonoBehaviour
 	LogLib.Logger<int> targetLogger; 
 	LogLib.Logger<int> timeLogger; 
 	LogLib.Logger<int> colorLogger; 
+	LogLib.Logger<int> clickLogger; 
 
 	public void CreateMolObjects()
 	{
@@ -132,7 +133,6 @@ public class MainScript : MonoBehaviour
 		{
 			for(int rep = 0; rep <= Settings.Values.repeat; rep++)
 			{ 
-				// TODO: 4 techniques!
 				for(int tech = 0; tech < 4; tech++)
 				{
 					Stimulus stimulus = new Stimulus(count, ecc, rep, tech);
@@ -331,6 +331,7 @@ public class MainScript : MonoBehaviour
 				targetLogger = CreateLogger ("target"); 
 				timeLogger = CreateLogger ("time"); 
 				colorLogger = CreateLogger ("color"); 
+				clickLogger = CreateLogger ("click"); 
 		
 				setupGUI = false; 
 				intermediate = true; 
@@ -379,6 +380,7 @@ public class MainScript : MonoBehaviour
 			if(time >= currentStimulus.delay){
 				stimulusObject.StartFocus(currentStimulus.techID);
 				foreach(MolObject mol in molObjects){
+					mol.StartHighlight(); 
 					if(mol != stimulusObject)
 						mol.StartContext(currentStimulus.techID); 
 				}
@@ -391,7 +393,13 @@ public class MainScript : MonoBehaviour
 
 		if(highlight)
 		{
-			int time = (int)stopWatch.ElapsedMilliseconds; 
+			int time = (int)stopWatch.ElapsedMilliseconds;
+
+			if(Input.GetKeyDown("s"))
+			{
+				Application.CaptureScreenshot(currentStimulus.techID + "_" + currentStimulus.visionArea + "_" + currentStimulus.stimulusId + "_" + time + ".png"); 
+			}
+			 
 			//print ("time: " + time + " < " + currentStimulus.duration + "?"); 
 			if(time >= currentStimulus.duration || Input.GetKeyDown("space"))
 			{
@@ -405,7 +413,7 @@ public class MainScript : MonoBehaviour
 
 			Vector3 mousePos = new Vector3(-1.0f, -1.0f, -1.0f); 
 			bool targetFound = false; 
-			if(Input.GetMouseButtonUp(0))
+			if(Input.GetMouseButtonUp(1))
 			{
 				mousePos = Input.mousePosition; 
 				mousePos.x -= Screen.width / 2; 
@@ -422,10 +430,17 @@ public class MainScript : MonoBehaviour
 				int dist = -1; 
 				if(targetFound)
 					dist = (int)(Vector3.Distance(stimulusObject.transform.position, mousePos));
+
+				int clicked = 0; 
+				foreach(MolObject mol in molObjects){
+					if(mol.wasClicked() && mol != stimulusObject)
+						clicked++; 
+				}
 			
 				Log (distLogger, currentStimulus, dist); 
 				Log (targetLogger, currentStimulus, Convert.ToInt32(targetFound)); 
 				Log (colorLogger, currentStimulus, stimulusObject.colorIndex); 
+				Log (clickLogger, currentStimulus, clicked); 
 
 				print ("Stimulus: " + currentStimulus + ": distance: " + dist + " -- target: " + targetFound); 
 
@@ -435,6 +450,7 @@ public class MainScript : MonoBehaviour
 					FiniLogger(targetLogger, "target");
 					FiniLogger (timeLogger, "time"); 
 					FiniLogger (colorLogger, "color"); 
+					FiniLogger (clickLogger, "click"); 
 
 					LoadScene();
 				}
@@ -479,6 +495,8 @@ public class MainScript : MonoBehaviour
 	{
 		Animate = true;
 
+		Screen.showCursor = true; 
+
 		currentStimulus = stimuli[currentStimulusIndex];
 
 		var shuffle = (from mol in molObjects orderby  Guid.NewGuid() select mol);
@@ -504,6 +522,10 @@ public class MainScript : MonoBehaviour
 					break;
 				}
 			}
+		}
+
+		foreach(MolObject mol in molObjects){
+			mol.StartStimulus(); 
 		}
 
 		if(stimulusObject == null)

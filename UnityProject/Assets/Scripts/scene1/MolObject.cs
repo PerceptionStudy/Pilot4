@@ -7,6 +7,7 @@ public class MolObject : MonoBehaviour
 	public bool animate = true;
 	
 	private bool focus = false;	
+	private bool highlight = false; 
 	private int focusTechnique = -1; 
 	//private bool firstWave = false;
 
@@ -15,7 +16,7 @@ public class MolObject : MonoBehaviour
 	public int T1 = 100; 
 	public int amp2 = 25; 
 	public int T2 = 600; 
-	public int d1 = 1000; 
+	public int d1 = 500; 
 	public int dt = 1500; 
 
 	// AF counter
@@ -28,9 +29,12 @@ public class MolObject : MonoBehaviour
 	private HaloObject halo; 
 	private TrailObject trail; 
 
+	private float targetSize; 
+
 	private Stopwatch stopWatch = new Stopwatch ();	
 
 	public int colorIndex; 
+	private bool clicked; 
 
 	public static MolObject CreateNewMolObject (Transform parent, string name, MolColor color, int colorIndex)
 	{
@@ -49,12 +53,19 @@ public class MolObject : MonoBehaviour
 			molObject.halo = null; 
 			molObject.trail = null; 
 			molObject.colorIndex = colorIndex; 
+			molObject.clicked = false; 
+			float sizeVariability = (float)Settings.Values.molScale * 0.0f; 
+			molObject.targetSize = Settings.Values.molScale + (UnityEngine.Random.Range (-sizeVariability, sizeVariability)); 
 
 			molGameObject.GetComponent<MeshRenderer> ().material.color = color.rgba;
 
 			return molObject;
 		}
 		return null;
+	}
+
+	public bool wasClicked(){
+		return this.clicked; 
 	}
 
 	void Start ()
@@ -78,10 +89,34 @@ public class MolObject : MonoBehaviour
 		rigidbody.drag = Settings.Values.drag;
 	}
 
+	void OnMouseDown(){
+		print ("color index: " + this.colorIndex + " --  highlight: " + highlight); 
+		if(this.colorIndex == 5){ // red
+			currentColor = new MolColor (Math.Min (this.currentColor.L + 25.0f, 100.0f), defaultColor.a, defaultColor.b);
+			gameObject.GetComponent<MeshRenderer> ().material.color = currentColor.rgba; 
+
+			if(!this.highlight){
+				this.clicked = true; 
+			}
+		}
+	}
+
+	public void StartStimulus()
+	{
+		//print ("start stimulus"); 
+		this.clicked = false; 
+		this.highlight = false; 
+	}
+
+	public void StartHighlight()
+	{
+		this.highlight = true; 
+	}
+
 	public void StartContext(int focusTechnique)
 	{
 		if(focusTechnique == 1){
-			currentColor = new MolColor(Math.Max (currentColor.L - 50.0f, 0.0f), defaultColor.a, defaultColor.b);
+			currentColor = new MolColor(Math.Max (currentColor.L * 0.25f, 0.0f), defaultColor.a, defaultColor.b);
 			gameObject.GetComponent<MeshRenderer> ().material.color = currentColor.rgba; 
 		}
 	}
@@ -100,17 +135,20 @@ public class MolObject : MonoBehaviour
 		this.focusTechnique = focusTechnique; 
 
 		MolColor haloColor = new MolColor (50.0f, 0.0f, 0.0f);  
-		float haloScale = 2.0f; 
+		float haloScale = 1.8f; 
+//		if(focusTechnique == 3){
+//			haloScale = 2.5f; 
+//		}
 
 		if(focusTechnique == 0){
 			this.t_prev = -1; 
 			this.T_prev = 0.0f; 
 		}
 		else{
-			this.halo = HaloObject.CreateNewHaloObject (this.transform.parent, this.transform.position, haloColor, haloScale); 
+			this.halo = HaloObject.CreateNewHaloObject (this.transform.parent, this.transform.position, haloColor, this.targetSize, haloScale); 
 		}
 		if(focusTechnique == 2){
-			this.trail = TrailObject.CreateNewTrailObject (this.transform.parent, this.transform.position, haloColor, haloScale); 
+			this.trail = TrailObject.CreateNewTrailObject (this.transform.parent, this.transform.position, haloColor, this.targetSize, haloScale); 
 		}
 		
 		stopWatch.Reset();
@@ -208,7 +246,7 @@ public class MolObject : MonoBehaviour
 	{
 		if(focus) FocusUpdate();
 
-		transform.localScale = new Vector3(Settings.Values.molScale, Settings.Values.molScale, Settings.Values.molScale);
+		transform.localScale = new Vector3(this.targetSize, this.targetSize, this.targetSize);
 
 		Vector3 temp = rigidbody.position;
 		

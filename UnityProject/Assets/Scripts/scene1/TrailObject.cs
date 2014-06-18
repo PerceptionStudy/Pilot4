@@ -8,9 +8,10 @@ public class TrailObject : MonoBehaviour {
 	private int[] triangles; 
 	private MolColor color; 
 	private float scale; 
+	private float targetSize; 
 	
 
-	public static TrailObject CreateNewTrailObject (Transform parent, Vector3 position, MolColor color, float scale)
+	public static TrailObject CreateNewTrailObject (Transform parent, Vector3 position, MolColor color, float targetSize, float scale)
 	{
 		scale /= 2.0f; 
 
@@ -19,8 +20,8 @@ public class TrailObject : MonoBehaviour {
 		vertices [0] = new Vector3 (0.0f, (float)Screen.height * 0.5f, 0.0f); 
 		Vector3 dir = position - vertices [0]; 
 		dir.Normalize (); 
-		vertices [1] = new Vector3 (position.x + Settings.Values.molScale * scale * dir.y, position.y - Settings.Values.molScale * scale * dir.x, 0.0f); 
-		vertices [2] = new Vector3 (position.x - Settings.Values.molScale * scale * dir.y, position.y + Settings.Values.molScale * scale * dir.x, 0.0f); 
+		vertices [1] = new Vector3 (position.x + targetSize * scale * dir.y, position.y - targetSize * scale * dir.x, 0.0f); 
+		vertices [2] = new Vector3 (position.x - targetSize * scale * dir.y, position.y + targetSize * scale * dir.x, 0.0f); 
 
 		print ("Create new trail [" + vertices[0] + ", " + vertices[1] + ", " + vertices[2] + "]"); 
 
@@ -55,6 +56,8 @@ public class TrailObject : MonoBehaviour {
 			trailObject.triangles = triangles; 
 			trailObject.uv = uv; 
 			trailObject.scale = scale; 
+			trailObject.color = color; 
+			trailObject.targetSize = targetSize; 
 			
 			return trailObject;
 		}
@@ -75,8 +78,8 @@ public class TrailObject : MonoBehaviour {
 		// update trail target
 		Vector3 dir = target - this.vertices[0]; 
 		dir.Normalize (); 
-		vertices [1] = new Vector3 (target.x + Settings.Values.molScale * scale * dir.y, target.y - Settings.Values.molScale * scale * dir.x, 0.0f); 
-		vertices [2] = new Vector3 (target.x - Settings.Values.molScale * scale * dir.y, target.y + Settings.Values.molScale * scale * dir.x, 0.0f); 
+		vertices [1] = new Vector3 (target.x + targetSize * scale * dir.y, target.y - targetSize * scale * dir.x, 0.0f); 
+		vertices [2] = new Vector3 (target.x - targetSize * scale * dir.y, target.y + targetSize * scale * dir.x, 0.0f); 
 		
 		// update mesh
 		Mesh mesh = GetComponent<MeshFilter> ().mesh; 
@@ -85,6 +88,9 @@ public class TrailObject : MonoBehaviour {
 		mesh.uv = uv; 
 		mesh.triangles = triangles; 
 		mesh.RecalculateBounds (); 
+
+		// reset color (maybe unnecessary...) 
+		GetComponent<MeshRenderer> ().material.color = this.color.rgba; 
 	}
 
 }
