@@ -16,7 +16,7 @@ public class MolObject : MonoBehaviour
 	public int T1 = 100; 
 	public int amp2 = 25; 
 	public int T2 = 600; 
-	public int d1 = 500; 
+	public int d1 = 5000; 
 	public int dt = 1500; 
 
 	// AF counter
@@ -135,7 +135,7 @@ public class MolObject : MonoBehaviour
 		this.focusTechnique = focusTechnique; 
 
 		MolColor haloColor = new MolColor (50.0f, 0.0f, 0.0f);  
-		float haloScale = 1.8f; 
+		float haloScale = 2.0f; 
 //		if(focusTechnique == 3){
 //			haloScale = 2.5f; 
 //		}

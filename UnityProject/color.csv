@@ -1,11 +1,5 @@
-userID;condition;rep_0--ecc_0--tech_0;rep_0--ecc_0--tech_1;rep_0--ecc_0--tech_2;rep_0--ecc_0--tech_3;rep_0--ecc_1--tech_0;rep_0--ecc_1--tech_1;rep_0--ecc_1--tech_2;rep_0--ecc_1--tech_3;rep_1--ecc_0--tech_0;rep_1--ecc_0--tech_1;rep_1--ecc_0--tech_2;rep_1--ecc_0--tech_3;rep_1--ecc_1--tech_0;rep_1--ecc_1--tech_1;rep_1--ecc_1--tech_2;rep_1--ecc_1--tech_3;rep_2--ecc_0--tech_0;rep_2--ecc_0--tech_1;rep_2--ecc_0--tech_2;rep_2--ecc_0--tech_3;rep_2--ecc_1--tech_0;rep_2--ecc_1--tech_1;rep_2--ecc_1--tech_2;rep_2--ecc_1--tech_3;rep_3--ecc_0--tech_0;rep_3--ecc_0--tech_1;rep_3--ecc_0--tech_2;rep_3--ecc_0--tech_3;rep_3--ecc_1--tech_0;rep_3--ecc_1--tech_1;rep_3--ecc_1--tech_2;rep_3--ecc_1--tech_3;rep_4--ecc_0--tech_0;rep_4--ecc_0--tech_1;rep_4--ecc_0--tech_2;rep_4--ecc_0--tech_3;rep_4--ecc_1--tech_0;rep_4--ecc_1--tech_1;rep_4--ecc_1--tech_2;rep_4--ecc_1--tech_3;rep_5--ecc_0--tech_0;rep_5--ecc_0--tech_1;rep_5--ecc_0--tech_2;rep_5--ecc_0--tech_3;rep_5--ecc_1--tech_0;rep_5--ecc_1--tech_1;rep_5--ecc_1--tech_2;rep_5--ecc_1--tech_3;rep_6--ecc_0--tech_0;rep_6--ecc_0--tech_1;rep_6--ecc_0--tech_2;rep_6--ecc_0--tech_3;rep_6--ecc_1--tech_0;rep_6--ecc_1--tech_1;rep_6--ecc_1--tech_2;rep_6--ecc_1--tech_3
-MB5;;6;11;1;0;0;2;5;9;7;0;4;0;11;0;8;0;7;10;0;2;0;1;7;10;4;9;0;8;8;6;4;5;0;9;11;7;11;0;2;0;7;11;10;2;8;5;6;4;5;2;6;0;8;1;1;6
-MWa_1;;4;2;2;4;10;8;5;7;7;0;7;5;10;0;9;11;2;11;10;1;3;4;10;2;2;3;4;9;8;0;4;3;9;9;1;9;0;4;10;11;11;6;6;9;6;3;1;6;4;0;4;1;1;1;8;10
-mb2;;1;10;1;7;3;2;10;3;9;3;0;2;6;3;5;1;0;10;1;6;2;7;9;2;5;2;9;1;11;11;11;2;0;10;10;3;11;7;10;4;3;7;10;11;4;10;5;2;7;6;1;0;11;10;1;9
-dfd;;11;6;3;3;8;3;3;7;10;5;11;10;10;2;11;7;3;9;2;4;11;0;3;8
-testclick;;1;1;11;2;11;11;2;0;1;7;6;2;0;0;10;0;3;3;5;0;2;0;8;6
-mb_dualtask2;;4;2;4;11;0;11;11;7;4;5;2;6;5;2;3;1;1;6;1;3;1;10;8;3
-Mwa_dualtask2;;3;5;10;6;9;1;6;10;8;6;4;8;4;6;2;11;5;2;0;3;9;1;1;2
-manu_dualTask2;;10;8;8;2;4;9;7;2;8;2;7;5;1;5;2;11;8;6;9;11;4;4;11;9
-sdf;;2;10;2;9;10;8;8;3;4;11;9;7;9;6;6;8;4;3;8;2;11;2;10;6
-1;;5;7;8;2;2;11;1;4;3;9;3;0;1;7;6;5;6;0;5;6;3;10;9;2;5;11;0;11;9;9;2;10;4;9;10;3;2;3;10;2;7;3;10;5;10;0;1;7;9;10;8;8;7;0;4;9
+userID;condition;rep_0--ecc_0--tech_3;rep_0--ecc_1--tech_3;rep_1--ecc_0--tech_3;rep_1--ecc_1--tech_3;rep_2--ecc_0--tech_3;rep_2--ecc_1--tech_3;rep_3--ecc_0--tech_3;rep_3--ecc_1--tech_3;rep_4--ecc_0--tech_3;rep_4--ecc_1--tech_3;rep_5--ecc_0--tech_3;rep_5--ecc_1--tech_3;rep_6--ecc_0--tech_3;rep_6--ecc_1--tech_3;rep_7--ecc_0--tech_3;rep_7--ecc_1--tech_3;rep_8--ecc_0--tech_3;rep_8--ecc_1--tech_3;rep_9--ecc_0--tech_3;rep_9--ecc_1--tech_3
+MWa;H;6;11;9;11;8;0;3;7;11;3;6;11;3;8;6;11;8;1;9;10
+MWa;AF;1;6;10;7;5;7;0;2;4;1;4;8;0;4;0;7;5;8;4;9
+MWa;SL;4;8;2;10;2;0;9;11;1;8;2;7;1;2;1;1;7;2;8;0
+MWa;AF;2;3;7;2;1;8;8;7;11;7;7;3;4;1;4;3;11;6;1;5

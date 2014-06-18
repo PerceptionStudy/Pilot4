@@ -133,13 +133,21 @@ public class MainScript : MonoBehaviour
 		{
 			for(int rep = 0; rep <= Settings.Values.repeat; rep++)
 			{ 
-				for(int tech = 0; tech < 4; tech++)
-				{
+				// TODO: either we have 4 techniques randomized, or one blocked
+//				for(int tech = 0; tech < 4; tech++)
+//				{
+				int tech = -1; 
+				if(this.conditionID.CompareTo("AF") == 0) tech = 0; 
+				else if(this.conditionID.CompareTo ("SL") == 0) tech = 1; 
+				else if(this.conditionID.CompareTo ("T") == 0) tech = 2; 
+				else if(this.conditionID.CompareTo ("H") == 0) tech = 3; 
+				else Application.Quit(); 
+
 					Stimulus stimulus = new Stimulus(count, ecc, rep, tech);
 					stimuli.Add(stimulus);
 
 					count ++;
-				}
+//				}
 			}
 		}
 		var shuffle = (from stimulus in stimuli orderby Guid.NewGuid() select stimulus);
@@ -150,7 +158,7 @@ public class MainScript : MonoBehaviour
 	void LoadScene ()
 	{
 		//Application.targetFrameRate = 60;
-		LoadStimuli();		
+			
 		CreateMolObjects();
 		
 		setupGUI = true; 
@@ -327,6 +335,8 @@ public class MainScript : MonoBehaviour
 		{
 			if(userID.Length > 0)
 			{
+				LoadStimuli();	
+
 				distLogger = CreateLogger("distance"); 
 				targetLogger = CreateLogger ("target"); 
 				timeLogger = CreateLogger ("time"); 
